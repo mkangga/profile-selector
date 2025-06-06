@@ -1,1 +1,210 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
+body {
+    margin: 0;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background-color: #141414;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.profile-selector-container,
+.pin-entry-container,
+.profile-content-container {
+    width: 100%;
+    max-width: 900px; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pin-entry-container,
+.profile-content-container {
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+
+h1 {
+    font-size: clamp(2rem, 3.5vw, 3rem); /* Responsive font size */
+    font-weight: 500;
+    margin-bottom: 40px;
+    color: #e5e5e5;
+}
+
+.profile-list {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: center;
+    gap: 20px; /* Space between profile cards */
+    margin-bottom: 50px;
+    padding: 0;
+}
+
+.profile-card {
+    width: clamp(100px, 15vw, 150px); /* Responsive width */
+    height: auto;
+    aspect-ratio: 1 / 1.3; /* Slightly taller than wide to accommodate text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align avatar to top */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s ease-out, border 0.2s ease-out;
+    border: 3px solid transparent; /* For hover effect */
+    padding-top: clamp(10px, 2vw, 15px); /* Padding for avatar */
+    box-sizing: border-box;
+    background-color: transparent; /* Handled by avatar */
+}
+
+.profile-card:hover,
+.profile-card:focus {
+    outline: none;
+    border-color: #e5e5e5;
+    transform: scale(1.05);
+}
+
+.avatar {
+    width: clamp(80px, 12vw, 120px); /* Avatar responsive size */
+    height: clamp(80px, 12vw, 120px);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    overflow: hidden; /* Ensure SVG fits */
+}
+
+/* Profile-specific avatar colors with gradients */
+.avatar-mka { background: linear-gradient(to bottom, #f05252, #c81e1e); } /* Red */
+.avatar-b { background: linear-gradient(to bottom, #60a5fa, #3b82f6); } /* Blue */
+.avatar-c { background: linear-gradient(to bottom, #fde047, #facc15); } /* Yellow */
+.avatar-d { background: linear-gradient(to bottom, #f87171, #ef4444); } /* Light Red */
+.avatar-e { background: linear-gradient(to bottom, #34d399, #059669); } /* Teal/Greenish from image */
+
+
+.profile-name {
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    color: #808080;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+.lock-icon {
+    color: #808080;
+    font-size: clamp(0.7rem, 1.2vw, 0.9rem); /* Smaller lock icon */
+}
+
+.lock-icon svg {
+    display: block; /* Removes any extra space below svg */
+}
+
+.manage-profile-button {
+    background-color: transparent;
+    border: 1px solid #808080;
+    color: #808080;
+    padding: 10px 20px;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.manage-profile-button:hover,
+.manage-profile-button:focus {
+    background-color: #333333;
+    color: #cccccc;
+    outline: none;
+}
+
+/* PIN Screen Styles */
+.pin-entry-container h2 {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    margin-bottom: 20px;
+    color: #e5e5e5;
+}
+
+.pin-input-field {
+    padding: 10px;
+    font-size: 1.2rem;
+    width: 150px;
+    text-align: center;
+    border: 1px solid #808080;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    letter-spacing: 0.3em; /* Spreads out PIN characters */
+}
+
+.pin-input-field:focus {
+    outline: none;
+    border-color: #e5e5e5;
+}
+
+.error-message {
+    color: #f87171; /* Light red for errors */
+    min-height: 1.2em; /* Reserve space for message */
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.pin-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.pin-action-button {
+    background-color: transparent;
+    border: 1px solid #808080;
+    color: #808080;
+    padding: 10px 20px;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    text-transform: uppercase;
+}
+
+.pin-action-button:hover,
+.pin-action-button:focus {
+    background-color: #e5e5e5;
+    color: #141414;
+    outline: none;
+}
+.pin-cancel-button:hover,
+.pin-cancel-button:focus {
+    background-color: #555;
+    color: #e5e5e5;
+}
+
+
+/* Profile Content Screen Styles */
+.profile-content-container h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    margin-bottom: 20px;
+    color: #e5e5e5;
+}
+.profile-content-container p {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    margin-bottom: 30px;
+    color: #b3b3b3;
+}
